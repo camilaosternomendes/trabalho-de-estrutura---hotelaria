@@ -111,3 +111,15 @@ void buscarHospede(Hotel *hotel, char nome[]) {
 // Função para editar o nome de um hóspede
 void editarNomeHospede(Hotel *hotel, char nomeAntigo[], char nomeNovo[]) {
     Hospede *atual = hotel->inicio;
+ // Percorre a lista de hóspedes buscando pelo nome antigo fornecido
+    while (atual != NULL) {
+        if (strcmp(atual->nome, nomeAntigo) == 0) {
+            // Atualiza o nome do hóspede com o novo nome fornecido
+            strcpy(atual->nome, nomeNovo);
+            printf("Nome do hóspede atualizado com sucesso.\n");
+            return;
+        }
+        atual = atual->prox;
+    }
+    printf("Ops! Hóspede %s não encontrado.\n", nomeAntigo);
+}
