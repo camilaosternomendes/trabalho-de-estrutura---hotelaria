@@ -78,3 +78,14 @@ void listarHospedes(Hotel *hotel) {
         atual = atual->prox;
         i++;
     }
+
+// Ordena o array de hóspedes em ordem alfabética pelo nome
+    for (int i = 0; i < numHospedes - 1; i++) {
+        for (int j = 0; j < numHospedes - i - 1; j++) {
+            if (strcmp(arrayHospedes[j]->nome, arrayHospedes[j + 1]->nome) > 0) {
+                Hospede *temp = arrayHospedes[j];
+                arrayHospedes[j] = arrayHospedes[j + 1];
+                arrayHospedes[j + 1] = temp;
+            }
+        }
+    }
