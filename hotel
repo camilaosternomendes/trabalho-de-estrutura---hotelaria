@@ -29,3 +29,10 @@ Hotel* inicializarHotel() {
     hotel->inicio = NULL;
     return hotel;
 }
+// Função para cadastrar um novo hóspede no hotel
+void cadastrarHospede(Hotel *hotel, char nome[], int quarto) {
+    // Verifica se o número do quarto é válido
+    if (quarto < 1 || quarto > MAX_QUARTOS) {
+        printf("Ops! Número do quarto inválido. Escolha um número entre 1 e %d.\n", MAX_QUARTOS);
+        return;
+    }
