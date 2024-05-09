@@ -273,3 +273,11 @@ int main() {
                 printf("Saindo...\n");
                 break;
             default:
+printf("Ops! Opção inválida. Por favor, escolha uma opção válida.\n");
+        }
+    } while (opcao != 8);
+
+    // Libera a memória alocada para o hotel
+    free(hotel);
+    return 0;
+}
