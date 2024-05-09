@@ -258,3 +258,8 @@ int main() {
                 scanf(" %[^\n]", novoNome);
                 editarNomeHospede(hotel, nome, novoNome);
                 break;
+ case 5:
+                printf("Digite o número do quarto a ser liberado (1 a %d): ", MAX_QUARTOS);
+                scanf("%d", &quarto);
+                liberarQuarto(hotel, quarto);
+                break;
