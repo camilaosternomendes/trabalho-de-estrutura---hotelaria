@@ -20,3 +20,8 @@ typedef struct {
 Hotel* inicializarHotel() {
     // Aloca memória para a estrutura Hotel
     Hotel hotel = (Hotel)malloc(sizeof(Hotel));
+ // Verifica se a alocação foi bem-sucedida
+    if (hotel == NULL) {
+        printf("Ops! Houve um erro ao criar o hotel. Por favor, tente novamente mais tarde.\n");
+        exit(EXIT_FAILURE);
+    }
