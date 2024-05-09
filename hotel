@@ -16,3 +16,7 @@ typedef struct Hospede {
 typedef struct {
     Hospede *inicio;
 } Hotel;
+// Função para inicializar o hotel, alocando memória e inicializando a lista de hóspedes
+Hotel* inicializarHotel() {
+    // Aloca memória para a estrutura Hotel
+    Hotel hotel = (Hotel)malloc(sizeof(Hotel));
