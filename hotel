@@ -199,3 +199,13 @@ void carregarLista(Hotel *hotel) {
         printf("Arquivo de hóspedes não encontrado. Será criado um novo arquivo.\n");
         return;
     }
+
+  // Lê os dados de cada hóspede do arquivo e os cadastra no hotel
+    char nome[MAX_NOME];
+    int quarto;
+    while (fscanf(arquivo, " %[^\n] %d", nome, &quarto) == 2) {
+        cadastrarHospede(hotel, nome, quarto);
+    }
+    fclose(arquivo);
+    printf("Lista de hóspedes carregada com sucesso!\n");
+}
