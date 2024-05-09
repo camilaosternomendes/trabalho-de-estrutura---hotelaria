@@ -11,3 +11,8 @@ typedef struct Hospede {
     int quarto;
     struct Hospede *prox;
 } Hospede;
+
+// Definição da estrutura de dados para representar um hotel
+typedef struct {
+    Hospede *inicio;
+} Hotel;
