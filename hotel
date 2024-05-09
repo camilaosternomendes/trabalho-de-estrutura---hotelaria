@@ -170,3 +170,11 @@ void mostrarQuartosVazios(Hotel *hotel) {
 }
 
 
+// Função para salvar a lista de hóspedes em um arquivo
+void salvarLista(Hotel *hotel) {
+    FILE *arquivo = fopen(ARQUIVO, "w");
+    // Verifica se o arquivo foi aberto corretamente
+    if (arquivo == NULL) {
+        printf("Ops! Erro ao abrir o arquivo para salvar a lista de hóspedes!\n");
+        return;
+    }
