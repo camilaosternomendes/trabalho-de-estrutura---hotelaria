@@ -160,3 +160,13 @@ void mostrarQuartosVazios(Hotel *hotel) {
         quartosOcupados[atual->quarto - 1] = 1;
         atual = atual->prox;
     }
+// Exibe os quartos vazios disponíveis
+    printf("Quartos vazios disponíveis:\n");
+    for (int i = 0; i < MAX_QUARTOS; i++) {
+        if (quartosOcupados[i] == 0) {
+            printf("Quarto %d\n", i + 1);
+        }
+    }
+}
+
+
