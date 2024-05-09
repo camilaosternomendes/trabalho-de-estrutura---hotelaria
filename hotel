@@ -69,3 +69,12 @@ void listarHospedes(Hotel *hotel) {
         numHospedes++;
         atual = atual->prox;
     }
+
+  Hospede *arrayHospedes[numHospedes];
+    atual = hotel->inicio;
+    int i = 0;
+    while (atual != NULL) {
+        arrayHospedes[i] = atual;
+        atual = atual->prox;
+        i++;
+    }
