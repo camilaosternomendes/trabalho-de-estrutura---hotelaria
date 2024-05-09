@@ -123,3 +123,10 @@ void editarNomeHospede(Hotel *hotel, char nomeAntigo[], char nomeNovo[]) {
     }
     printf("Ops! Hóspede %s não encontrado.\n", nomeAntigo);
 }
+// Função para liberar um quarto, removendo o hóspede associado a ele
+void liberarQuarto(Hotel *hotel, int quarto) {
+    // Verifica se o número do quarto é válido
+    if (quarto < 1 || quarto > MAX_QUARTOS) {
+        printf("Ops! Número do quarto inválido. Escolha um número entre 1 e %d.\n", MAX_QUARTOS);
+        return;
+    }
