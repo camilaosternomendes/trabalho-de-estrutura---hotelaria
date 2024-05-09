@@ -53,3 +53,11 @@ void cadastrarHospede(Hotel *hotel, char nome[], int quarto) {
     printf("Hóspede %s cadastrado no quarto %d com sucesso!\n", nome, quarto);
 }
 
+// Função para listar os hóspedes em ordem alfabética
+void listarHospedes(Hotel *hotel) {
+    printf("Lista de Hóspedes em Ordem Alfabética:\n");
+    // Verifica se há hóspedes cadastrados no hotel
+    if (hotel->inicio == NULL) {
+        printf("Ops! Não há hóspedes cadastrados no momento.\n");
+        return;
+    }
