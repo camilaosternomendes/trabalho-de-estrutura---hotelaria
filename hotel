@@ -5,6 +5,7 @@
 #define MAX_NOME 50
 #define MAX_QUARTOS 50
 #define ARQUIVO "hospedes.txt"
+
 // Definição da estrutura de dados para representar um hóspede
 typedef struct Hospede {
     char nome[MAX_NOME];
@@ -16,10 +17,11 @@ typedef struct Hospede {
 typedef struct {
     Hospede *inicio;
 } Hotel;
+
 // Função para inicializar o hotel, alocando memória e inicializando a lista de hóspedes
 Hotel* inicializarHotel() {
     // Aloca memória para a estrutura Hotel
-    Hotel hotel = (Hotel)malloc(sizeof(Hotel));
+    Hotel *hotel = (Hotel*)malloc(sizeof(Hotel));
  // Verifica se a alocação foi bem-sucedida
     if (hotel == NULL) {
         printf("Ops! Houve um erro ao criar o hotel. Por favor, tente novamente mais tarde.\n");
@@ -29,6 +31,7 @@ Hotel* inicializarHotel() {
     hotel->inicio = NULL;
     return hotel;
 }
+
 // Função para cadastrar um novo hóspede no hotel
 void cadastrarHospede(Hotel *hotel, char nome[], int quarto) {
     // Verifica se o número do quarto é válido
@@ -37,13 +40,12 @@ void cadastrarHospede(Hotel *hotel, char nome[], int quarto) {
         return;
     }
 // Aloca memória para o novo hóspede
-    Hospede novoHospede = (Hospede)malloc(sizeof(Hospede));
+    Hospede *novoHospede = (Hospede*)malloc(sizeof(Hospede));
     // Verifica se a alocação foi bem-sucedida
     if (novoHospede == NULL) {
         printf("Ops! Houve um problema ao cadastrar o hóspede. Por favor, tente novamente mais tarde.\n");
         exit(EXIT_FAILURE);
     }
-
  // Copia o nome e atribui o número do quarto ao novo hóspede
     strcpy(novoHospede->nome, nome);
     novoHospede->quarto = quarto;
