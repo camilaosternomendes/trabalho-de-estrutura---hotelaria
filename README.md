@@ -30,4 +30,4 @@ Siga as instruções fornecidas pelo programa para realizar as operações desej
 - Arquivo de Lista de Hóspedes: 
   O programa salva e carrega a lista de hóspedes de/para um arquivo chamado `hospedes.txt` no diretório atual. Certifique-se de que o programa tenha permissão para escrever neste arquivo.
 
-Este sistema de gerenciamento de hotel oferece uma maneira simples e eficiente de gerenciar os hóspedes de um hotel. Se tiver mais perguntas ou precisar de assistência adicional, não hesite em entrar em contato!
+Este sistema de gerenciamento de hotel oferece uma maneira simples e eficiente de gerenciar os hóspedes de um hotel. 
