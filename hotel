@@ -218,3 +218,18 @@ int main() {
     int opcao, quarto;
     char nome[MAX_NOME];
     char novoNome[MAX_NOME];
+
+ // Loop do menu principal
+    do {
+        // Exibe o menu de opções
+        printf("\nMenu:\n");
+        printf("1. Cadastrar Hóspede\n");
+        printf("2. Listar Hóspedes em Ordem Alfabética\n");
+        printf("3. Buscar Hóspede\n");
+        printf("4. Editar Nome do Hóspede\n");
+        printf("5. Liberar Quarto\n");
+        printf("6. Mostrar Quartos Vazios\n");
+        printf("7. Salvar Lista de Hóspedes\n");
+        printf("8. Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
