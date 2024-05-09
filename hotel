@@ -189,3 +189,13 @@ void salvarLista(Hotel *hotel) {
     fclose(arquivo);
     printf("Lista de hóspedes salva com sucesso!\n");
 }
+
+
+// Função para carregar a lista de hóspedes de um arquivo
+void carregarLista(Hotel *hotel) {
+    FILE *arquivo = fopen(ARQUIVO, "r");
+    // Verifica se o arquivo foi aberto corretamente
+    if (arquivo == NULL) {
+        printf("Arquivo de hóspedes não encontrado. Será criado um novo arquivo.\n");
+        return;
+    }
