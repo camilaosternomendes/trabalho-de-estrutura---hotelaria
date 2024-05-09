@@ -130,3 +130,8 @@ void liberarQuarto(Hotel *hotel, int quarto) {
         printf("Ops! Número do quarto inválido. Escolha um número entre 1 e %d.\n", MAX_QUARTOS);
         return;
     }
+// Percorre a lista de hóspedes buscando pelo quarto fornecido
+    Hospede *anterior = NULL;
+    Hospede *atual = hotel->inicio;
+    while (atual != NULL) {
+        if (atual->quarto == quarto) {
