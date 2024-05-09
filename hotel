@@ -178,3 +178,14 @@ void salvarLista(Hotel *hotel) {
         printf("Ops! Erro ao abrir o arquivo para salvar a lista de hóspedes!\n");
         return;
     }
+
+
+// Escreve os dados de cada hóspede no arquivo
+    Hospede *atual = hotel->inicio;
+    while (atual != NULL) {
+        fprintf(arquivo, "%s %d\n", atual->nome, atual->quarto);
+        atual = atual->prox;
+    }
+    fclose(arquivo);
+    printf("Lista de hóspedes salva com sucesso!\n");
+}
