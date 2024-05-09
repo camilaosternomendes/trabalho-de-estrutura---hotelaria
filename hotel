@@ -25,3 +25,7 @@ Hotel* inicializarHotel() {
         printf("Ops! Houve um erro ao criar o hotel. Por favor, tente novamente mais tarde.\n");
         exit(EXIT_FAILURE);
     }
+// Inicializa a lista de hóspedes como vazia
+    hotel->inicio = NULL;
+    return hotel;
+}
