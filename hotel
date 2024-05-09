@@ -103,3 +103,7 @@ void buscarHospede(Hotel *hotel, char nome[]) {
             printf("Hóspede %s encontrado no quarto %d.\n", nome, atual->quarto);
             return;
         }
+ atual = atual->prox;
+    }
+    printf("Ops! Hóspede %s não encontrado.\n", nome);
+}
