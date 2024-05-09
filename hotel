@@ -135,3 +135,18 @@ void liberarQuarto(Hotel *hotel, int quarto) {
     Hospede *atual = hotel->inicio;
     while (atual != NULL) {
         if (atual->quarto == quarto) {
+ // Remove o hóspede associado ao quarto e libera a memória
+            if (anterior == NULL) {
+                hotel->inicio = atual->prox;
+            } else {
+                anterior->prox = atual->prox;
+            }
+            free(atual);
+            printf("Quarto %d liberado com sucesso.\n", quarto);
+            return;
+        }
+        anterior = atual;
+        atual = atual->prox;
+    }
+    printf("Ops! Quarto %d não encontrado.\n", quarto);
+}
