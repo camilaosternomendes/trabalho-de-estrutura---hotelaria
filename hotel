@@ -2,3 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_NOME 50
+#define MAX_QUARTOS 50
+#define ARQUIVO "hospedes.txt"
