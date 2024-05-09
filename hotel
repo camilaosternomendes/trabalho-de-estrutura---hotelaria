@@ -94,3 +94,12 @@ void listarHospedes(Hotel *hotel) {
         printf("Quarto %d: %s\n", arrayHospedes[i]->quarto, arrayHospedes[i]->nome);
     }
 }
+// Função para buscar um hóspede pelo nome
+void buscarHospede(Hotel *hotel, char nome[]) {
+    Hospede *atual = hotel->inicio;
+    // Percorre a lista de hóspedes buscando pelo nome fornecido
+    while (atual != NULL) {
+        if (strcmp(atual->nome, nome) == 0) {
+            printf("Hóspede %s encontrado no quarto %d.\n", nome, atual->quarto);
+            return;
+        }
