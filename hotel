@@ -43,3 +43,13 @@ void cadastrarHospede(Hotel *hotel, char nome[], int quarto) {
         printf("Ops! Houve um problema ao cadastrar o hóspede. Por favor, tente novamente mais tarde.\n");
         exit(EXIT_FAILURE);
     }
+
+ // Copia o nome e atribui o número do quarto ao novo hóspede
+    strcpy(novoHospede->nome, nome);
+    novoHospede->quarto = quarto;
+    // Insere o novo hóspede no início da lista de hóspedes do hotel
+    novoHospede->prox = hotel->inicio;
+    hotel->inicio = novoHospede;
+    printf("Hóspede %s cadastrado no quarto %d com sucesso!\n", nome, quarto);
+}
+
