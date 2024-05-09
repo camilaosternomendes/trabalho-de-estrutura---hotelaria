@@ -243,3 +243,18 @@ int main() {
                 scanf("%d", &quarto);
                 cadastrarHospede(hotel, nome, quarto);
                 break;
+ case 2:
+                listarHospedes(hotel);
+                break;
+            case 3:
+                printf("Digite o nome do hóspede a ser buscado: ");
+                scanf(" %[^\n]", nome);
+                buscarHospede(hotel, nome);
+                break;
+            case 4:
+                printf("Digite o nome do hóspede a ser editado: ");
+                scanf(" %[^\n]", nome);
+                printf("Digite o novo nome: ");
+                scanf(" %[^\n]", novoNome);
+                editarNomeHospede(hotel, nome, novoNome);
+                break;
