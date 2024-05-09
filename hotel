@@ -209,3 +209,12 @@ void carregarLista(Hotel *hotel) {
     fclose(arquivo);
     printf("Lista de hóspedes carregada com sucesso!\n");
 }
+
+// Função principal
+int main() {
+    Hotel *hotel = inicializarHotel(); // Inicializa o hotel
+    carregarLista(hotel); // Carrega a lista de hóspedes do arquivo
+
+    int opcao, quarto;
+    char nome[MAX_NOME];
+    char novoNome[MAX_NOME];
