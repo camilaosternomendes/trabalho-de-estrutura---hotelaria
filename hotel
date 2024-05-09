@@ -89,3 +89,8 @@ void listarHospedes(Hotel *hotel) {
             }
         }
     }
+  // Imprime os hóspedes na lista ordenada
+    for (int i = 0; i < numHospedes; i++) {
+        printf("Quarto %d: %s\n", arrayHospedes[i]->quarto, arrayHospedes[i]->nome);
+    }
+}
