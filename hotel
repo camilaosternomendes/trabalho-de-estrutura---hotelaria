@@ -263,3 +263,13 @@ int main() {
                 scanf("%d", &quarto);
                 liberarQuarto(hotel, quarto);
                 break;
+  case 6:
+                mostrarQuartosVazios(hotel);
+                break;
+            case 7:
+                salvarLista(hotel);
+                break;
+            case 8:
+                printf("Saindo...\n");
+                break;
+            default:
