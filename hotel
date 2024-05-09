@@ -36,3 +36,10 @@ void cadastrarHospede(Hotel *hotel, char nome[], int quarto) {
         printf("Ops! Número do quarto inválido. Escolha um número entre 1 e %d.\n", MAX_QUARTOS);
         return;
     }
+// Aloca memória para o novo hóspede
+    Hospede novoHospede = (Hospede)malloc(sizeof(Hospede));
+    // Verifica se a alocação foi bem-sucedida
+    if (novoHospede == NULL) {
+        printf("Ops! Houve um problema ao cadastrar o hóspede. Por favor, tente novamente mais tarde.\n");
+        exit(EXIT_FAILURE);
+    }
