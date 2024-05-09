@@ -233,3 +233,13 @@ int main() {
         printf("8. Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
+
+// Executa a opção escolhida pelo usuário
+        switch (opcao) {
+            case 1:
+                printf("Digite o nome do hóspede: ");
+                scanf(" %[^\n]", nome);
+                printf("Digite o número do quarto (1 a %d): ", MAX_QUARTOS);
+                scanf("%d", &quarto);
+                cadastrarHospede(hotel, nome, quarto);
+                break;
