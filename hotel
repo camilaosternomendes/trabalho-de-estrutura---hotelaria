@@ -61,3 +61,11 @@ void listarHospedes(Hotel *hotel) {
         printf("Ops! Não há hóspedes cadastrados no momento.\n");
         return;
     }
+
+// Conta o número de hóspedes e cria um array de ponteiros para hóspedes
+    int numHospedes = 0;
+    Hospede *atual = hotel->inicio;
+    while (atual != NULL) {
+        numHospedes++;
+        atual = atual->prox;
+    }
