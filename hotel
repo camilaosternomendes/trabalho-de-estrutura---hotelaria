@@ -150,3 +150,13 @@ void liberarQuarto(Hotel *hotel, int quarto) {
     }
     printf("Ops! Quarto %d não encontrado.\n", quarto);
 }
+
+// Função para mostrar os quartos vazios disponíveis no hotel
+void mostrarQuartosVazios(Hotel *hotel) {
+    int quartosOcupados[MAX_QUARTOS] = {0};
+    // Marca os quartos ocupados na lista de hóspedes
+    Hospede *atual = hotel->inicio;
+    while (atual != NULL) {
+        quartosOcupados[atual->quarto - 1] = 1;
+        atual = atual->prox;
+    }
