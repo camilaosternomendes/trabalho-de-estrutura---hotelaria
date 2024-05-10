@@ -3,192 +3,192 @@
 #include <string.h>
 
 #define MAX_NOMINAL 90
-#define MAX_ESPAÇOS 30
+#define MAX_ESPACOS 30
 #define ARQUIVO "visitantes.txt"
 
-// Definição da estrutura de dados para representar um hóspede
+// Definicao da estrutura de dados para representar um hospede
 typedef struct Convidado {
     char apelido[MAX_NOMINAL];
     int quarto;
-    struct Convidado *próximo;
+    struct Convidado *proximo;
 } Convidado;
 
-// Definição da estrutura de dados para representar um hotel
+// Definicao da estrutura de dados para representar um hotel
 typedef struct {
-    Convidado *começo;
+    Convidado *comeco;
 } Pousada;
 
-// Função para inicializar o hotel, alocando memória e inicializando a lista de hóspedes
-Pousada* começarPousada() {
-    // Aloca memória para a estrutura Pousada
+// Funcao para inicializar o hotel, alocando memoria e inicializando a lista de hospedes
+Pousada* comecarPousada() {
+    // Aloca memoria para a estrutura Pousada
     Pousada *pousada = (Pousada*)malloc(sizeof(Pousada));
-    // Verifica se a alocação foi bem-sucedida
+    // Verifica se a alocacao foi bem-sucedida
     if (pousada == NULL) {
         printf("Ops! Houve um erro ao criar a pousada. Por favor, tente novamente mais tarde.\n");
         exit(EXIT_FAILURE);
     }
-    // Inicializa a lista de hóspedes como vazia
-    pousada->começo = NULL;
+    // Inicializa a lista de hospedes como vazia
+    pousada->comeco = NULL;
     return pousada;
 }
 
-// Função para cadastrar um novo hóspede no hotel
-void convidarHóspede(Pousada *pousada, char apelido[], int quarto) {
-    // Verifica se o número do quarto é válido
-    if (quarto < 1 || quarto > MAX_ESPAÇOS) {
-        printf("Ops! Número do quarto inválido. Escolha um número entre 1 e %d.\n", MAX_ESPAÇOS);
+// Funcao para cadastrar um novo hospede no hotel
+void convidarHospede(Pousada *pousada, char apelido[], int quarto) {
+    // Verifica se o numero do quarto e valido
+    if (quarto < 1 || quarto > MAX_ESPACOS) {
+        printf("Ops! Numero do quarto invalido. Escolha um numero entre 1 e %d.\n", MAX_ESPACOS);
         return;
     }
-    // Aloca memória para o novo hóspede
+    // Aloca memoria para o novo hospede
     Convidado *novoConvidado = (Convidado*)malloc(sizeof(Convidado));
-    // Verifica se a alocação foi bem-sucedida
+    // Verifica se a alocacao foi bem-sucedida
     if (novoConvidado == NULL) {
-        printf("Ops! Houve um problema ao convidar o hóspede. Por favor, tente novamente mais tarde.\n");
+        printf("Ops! Houve um problema ao convidar o hospede. Por favor, tente novamente mais tarde.\n");
         exit(EXIT_FAILURE);
     }
-    // Copia o nome e atribui o número do quarto ao novo hóspede
+    // Copia o nome e atribui o numero do quarto ao novo hospede
     strcpy(novoConvidado->apelido, apelido);
     novoConvidado->quarto = quarto;
-    // Insere o novo hóspede no começo da lista de hóspedes do hotel
-    novoConvidado->próximo = pousada->começo;
-    pousada->começo = novoConvidado;
-    printf("\n\n\n\nHóspede %s convidado para o quarto %d com sucesso!\n\n\n", apelido, quarto);
+    // Insere o novo hospede no comeco da lista de hospedes do hotel
+    novoConvidado->proximo = pousada->comeco;
+    pousada->comeco = novoConvidado;
+    printf("\n\n\n\nHospede %s convidado para o quarto %d com sucesso!\n\n\n", apelido, quarto);
 }
 
-// Função para listar os hóspedes em ordem alfabética
-void listarHóspedes(Pousada *pousada) {
-    printf("Lista de Hóspedes em Ordem Alfabética:\n");
-    // Verifica se há hóspedes cadastrados no hotel
-    if (pousada->começo == NULL) {
-        printf("Ops! Não há hóspedes cadastrados no momento.\n");
+// Funcao para listar os hospedes em ordem alfabetica
+void listarHospedes(Pousada *pousada) {
+    printf("Lista de Hospedes em Ordem Alfabetica:\n");
+    // Verifica se ha hospedes cadastrados no hotel
+    if (pousada->comeco == NULL) {
+        printf("Ops! Nao ha hospedes cadastrados no momento.\n");
         return;
     }
-    // Conta o número de hóspedes e cria um array de ponteiros para hóspedes
-    int numHóspedes = 0;
-    Convidado *atual = pousada->começo;
+    // Conta o numero de hospedes e cria um array de ponteiros para hospedes
+    int numHospedes = 0;
+    Convidado *atual = pousada->comeco;
     while (atual != NULL) {
-        numHóspedes++;
-        atual = atual->próximo;
+        numHospedes++;
+        atual = atual->proximo;
     }
-    Convidado *listaHóspedes[numHóspedes];
-    atual = pousada->começo;
+    Convidado *listaHospedes[numHospedes];
+    atual = pousada->comeco;
     int i = 0;
     while (atual != NULL) {
-        listaHóspedes[i] = atual;
-        atual = atual->próximo;
+        listaHospedes[i] = atual;
+        atual = atual->proximo;
         i++;
     }
-    // Ordena o array de hóspedes em ordem alfabética pelo nome
-    for (int i = 0; i < numHóspedes - 1; i++) {
-        for (int j = 0; j < numHóspedes - i - 1; j++) {
-            if (strcmp(listaHóspedes[j]->apelido, listaHóspedes[j + 1]->apelido) > 0) {
-                Convidado *temporário = listaHóspedes[j];
-                listaHóspedes[j] = listaHóspedes[j + 1];
-                listaHóspedes[j + 1] = temporário;
+    // Ordena o array de hospedes em ordem alfabetica pelo nome
+    for (int i = 0; i < numHospedes - 1; i++) {
+        for (int j = 0; j < numHospedes - i - 1; j++) {
+            if (strcmp(listaHospedes[j]->apelido, listaHospedes[j + 1]->apelido) > 0) {
+                Convidado *temporario = listaHospedes[j];
+                listaHospedes[j] = listaHospedes[j + 1];
+                listaHospedes[j + 1] = temporario;
             }
         }
     }
-    // Imprime os hóspedes na lista ordenada
-    for (int i = 0; i < numHóspedes; i++) {
-        printf("hospede %s esta no Quarto: %d \n\n\n", listaHóspedes[i]->apelido,listaHóspedes[i]->quarto);
+    // Imprime os hospedes na lista ordenada
+    for (int i = 0; i < numHospedes; i++) {
+        printf("hospede %s esta no Quarto: %d \n\n\n", listaHospedes[i]->apelido,listaHospedes[i]->quarto);
     }
 }
 
-// Função para buscar um hóspede pelo nome
-void procurarHóspede(Pousada *pousada, char apelido[]) {
-    Convidado *atual = pousada->começo;
-    // Percorre a lista de hóspedes buscando pelo nome fornecido
+// Funcao para buscar um hospede pelo nome
+void procurarHospede(Pousada *pousada, char apelido[]) {
+    Convidado *atual = pousada->comeco;
+    // Percorre a lista de hospedes buscando pelo nome fornecido
     while (atual != NULL) {
         if (strcmp(atual->apelido, apelido) == 0) {
-            printf("Hóspede %s encontrado no quarto %d.\n\n\n", apelido, atual->quarto);
+            printf("Hospede %s encontrado no quarto %d.\n\n\n", apelido, atual->quarto);
             return;
         }
-        atual = atual->próximo;
+        atual = atual->proximo;
     }
-    printf("Ops! Hóspede %s não encontrado.\n\n\n", apelido);
+    printf("Ops! Hospede %s nao encontrado.\n\n\n", apelido);
 }
 
-// Função para editar o nome de um hóspede
-void editarNomeHóspede(Pousada *pousada, char apelidoAntigo[], char apelidoNovo[]) {
-    Convidado *atual = pousada->começo;
-    // Percorre a lista de hóspedes buscando pelo nome antigo fornecido
+// Funcao para editar o nome de um hospede
+void editarNomeHospede(Pousada *pousada, char apelidoAntigo[], char apelidoNovo[]) {
+    Convidado *atual = pousada->comeco;
+    // Percorre a lista de hospedes buscando pelo nome antigo fornecido
     while (atual != NULL) {
         if (strcmp(atual->apelido, apelidoAntigo) == 0) {
-            // Atualiza o nome do hóspede com o novo nome fornecido
+            // Atualiza o nome do hospede com o novo nome fornecido
             strcpy(atual->apelido, apelidoNovo);
-            printf("Nome do hóspede foi atualizado!!!!.\n\n\n");
+            printf("Nome do hospede foi atualizado!!!!.\n\n\n");
             return;
         }
-        atual = atual->próximo;
+        atual = atual->proximo;
     }
-    printf("Ops! Hóspede %s não encontrado.\n\n\n", apelidoAntigo);
+    printf("==Ops! Hospede %s nao encontrado.\n\n\n", apelidoAntigo);
 }
 
-// Função para liberar um quarto, removendo o hóspede associado a ele
+// Funcao para liberar um quarto, removendo o hospede associado a ele
 void liberarQuarto(Pousada *pousada, int quarto) {
-    // Verifica se o número do quarto é válido
-    if (quarto < 1 || quarto > MAX_ESPAÇOS) {
-        printf("Ops! Número do quarto inválido. Escolha um número entre 1 e %d.\n\n\n", MAX_ESPAÇOS);
+    // Verifica se o numero do quarto e valido
+    if (quarto < 1 || quarto > MAX_ESPACOS) {
+        printf("Ops! Numero do quarto invalido. Escolha um numero entre 1 e %d.\n\n\n", MAX_ESPACOS);
         return;
     }
-    // Percorre a lista de hóspedes buscando pelo quarto fornecido
+    // Percorre a lista de hospedes buscando pelo quarto fornecido
     Convidado *anterior = NULL;
-    Convidado *atual = pousada->começo;
+    Convidado *atual = pousada->comeco;
     while (atual != NULL) {
         if (atual->quarto == quarto) {
-            // Remove o hóspede associado ao quarto e libera a memória
+            // Remove o hospede associado ao quarto e libera a memoria
             if (anterior == NULL) {
-                pousada->começo = atual->próximo;
+                pousada->comeco = atual->proximo;
             } else {
-                anterior->próximo = atual->próximo;
+                anterior->proximo = atual->proximo;
             }
             free(atual);
             printf("Quarto %d liberado com sucesso!!.\n\n\n", quarto);
             return;
         }
         anterior = atual;
-        atual = atual->próximo;
+        atual = atual->proximo;
     }
-    printf("Ops! Quarto %d não encontrado.\n\n\n", quarto);
+    printf("Ops! Quarto %d nao encontrado.\n\n\n", quarto);
 }
 
-// Função para mostrar os quartos vazios disponíveis no hotel
+// Funcao para mostrar os quartos vazios disponiveis no hotel
 void mostrarQuartosVazios(Pousada *pousada) {
-    int quartosOcupados[MAX_ESPAÇOS] = {0};
-    // Marca os quartos ocupados na lista de hóspedes
-    Convidado *atual = pousada->começo;
+    int quartosOcupados[MAX_ESPACOS] = {0};
+    // Marca os quartos ocupados na lista de hospedes
+    Convidado *atual = pousada->comeco;
     while (atual != NULL) {
         quartosOcupados[atual->quarto - 1] = 1;
-        atual = atual->próximo;
+        atual = atual->proximo;
     }
-    // Exibe os quartos vazios disponíveis
-    printf("estes são os quartos que ainda estão disponiveis:\n\n\n");
-    for (int i = 0; i < MAX_ESPAÇOS; i++) {
+    // Exibe os quartos vazios disponiveis
+    printf("estes sao os quartos que ainda estao disponiveis:\n\n\n");
+    for (int i = 0; i < MAX_ESPACOS; i++) {
         if (quartosOcupados[i] == 0) {
             printf("Quarto %d\n\n\n", i + 1);
         }
     }
 }
 
-// Função para salvar a lista de hóspedes em um arquivo
+// Funcao para salvar a lista de hospedes em um arquivo
 void salvarLista(Pousada *pousada) {
     FILE *arquivo = fopen(ARQUIVO, "w");
     // Verifica se o arquivo foi aberto corretamente
     if (arquivo == NULL) {
-        printf("Ops! Erro ao abrir o arquivo para salvar a lista de hóspedes!\n\n\n");
+        printf("Ops! Erro ao abrir o arquivo para salvar a lista de hospedes!\n\n\n");
         return;
     }
-    // Escreve os dados de cada hóspede no arquivo
-    Convidado *atual = pousada->começo;
+    // Escreve os dados de cada hospede no arquivo
+    Convidado *atual = pousada->comeco;
     while (atual != NULL) {
         fprintf(arquivo, "%s %d\n\n\n", atual->apelido, atual->quarto);
-        atual = atual->próximo;
+        atual = atual->proximo;
     }
     fclose(arquivo);
-    printf("Lista de hóspedes salva com sucesso!\n\n");
+    printf("Lista de hospedes salva com sucesso!\n\n");
 }
 
-// Função para carregar a lista de hóspedes de um arquivo
+// Funcao para carregar a lista de hospedes de um arquivo
 void carregarLista(Pousada *pousada) {
     FILE *arquivo = fopen(ARQUIVO, "r");
     // Verifica se o arquivo foi aberto corretamente
@@ -196,66 +196,66 @@ void carregarLista(Pousada *pousada) {
         printf("===  criando um novo arquivo de hospedes  ===\n\n");
         return;
     }
-    // Lê os dados de cada hóspede do arquivo e os cadastra no hotel
+    // Le os dados de cada hospede do arquivo e os cadastra no hotel
     char apelido[MAX_NOMINAL];
     int quarto;
     while (fscanf(arquivo, " %[^\n] %d", apelido, &quarto) == 2) {
-        convidarHóspede(pousada, apelido, quarto);
+        convidarHospede(pousada, apelido, quarto);
     }
     fclose(arquivo);
-    printf("Lista de hóspedes carregada com sucesso!\n\n\n");
+    printf("Lista de hospedes carregada com sucesso!\n\n\n");
 }
 
-// Função principal
+// Funcao principal
 int main() {
-    Pousada *pousada = começarPousada(); // Inicializa o hotel
-    carregarLista(pousada); // Carrega a lista de hóspedes do arquivo
+    Pousada *pousada = comecarPousada(); // Inicializa o hotel
+    carregarLista(pousada); // Carrega a lista de hospedes do arquivo
 
-    int opção, quarto;
+    int opcao, quarto;
     char apelido[MAX_NOMINAL];
     char novoApelido[MAX_NOMINAL];
 
     // Loop do menu principal
     do {
-        // Exibe o menu de opções
+        // Exibe o menu de opcoes
         printf("\n\n\n\n\n\nMenu:\n");
-        printf("\n\n1. Convidar Novo Hóspede\n");
-        printf("\n\n2. Listar Hóspedes em Ordem Alfabética\n");
-        printf("\n\n3. Procurar Hóspede\n");
-        printf("\n\n4. Editar Apelido do Hóspede\n");
+        printf("\n\n1. Convidar Novo Hospede\n");
+        printf("\n\n2. Listar Hospedes em Ordem Alfabetica\n");
+        printf("\n\n3. Procurar Hospede\n");
+        printf("\n\n4. Editar Apelido do Hospede\n");
         printf("\n\n5. Liberar Quarto\n");
-        printf("\n\n6. Mostrar Quais Espaços estão Disponíveis\n");
-        printf("\n\n7. Salvar Lista de Hóspedes\n");
+        printf("\n\n6. Mostrar Quais Espacos estao Disponiveis\n");
+        printf("\n\n7. Salvar Lista de Hospedes\n");
         printf("\n\n8. Sair do Programa\n");
-        printf("\n\nEscolha uma opção: ");
-        scanf("%d", &opção);
+        printf("\n\nEscolha uma opcao: ");
+        scanf("%d", &opcao);
 
-        // Executa a opção escolhida pelo usuário
-        switch (opção) {
+        // Executa a opcao escolhida pelo usuario
+        switch (opcao) {
             case 1:
-                printf("\nInsira o apelido do hóspede:\n ");
+                printf("\nInsira o apelido do hospede:\n ");
                 scanf(" %[^\n]", apelido);
-                printf("\nInsira o número do quarto (1 a %d):\n ", MAX_ESPAÇOS);
+                printf("\nInsira o numero do quarto (1 a %d):\n ", MAX_ESPACOS);
                 scanf("%d", &quarto);
-                convidarHóspede(pousada, apelido, quarto);
+                convidarHospede(pousada, apelido, quarto);
                 break;
             case 2:
-                listarHóspedes(pousada);
+                listarHospedes(pousada);
                 break;
             case 3:
-                printf("\nInsira o apelido do hóspede a que esta procurando:\n ");
+                printf("\nInsira o apelido do hospede a que esta procurando:\n ");
                 scanf(" %[^\n]", apelido);
-                procurarHóspede(pousada, apelido);
+                procurarHospede(pousada, apelido);
                 break;
             case 4:
-                printf("\nInsira o apelido do hóspede que deseja editar:\n ");
+                printf("\nInsira o apelido do hospede que deseja editar:\n ");
                 scanf(" %[^\n]", apelido);
                 printf("\nInsira o novo apelido:\n ");
                 scanf(" %[^\n]", novoApelido);
-                editarNomeHóspede(pousada, apelido, novoApelido);
+                editarNomeHospede(pousada, apelido, novoApelido);
                 break;
             case 5:
-                printf("\nInsira o número do quarto a ser liberado (1 a %d):\n ", MAX_ESPAÇOS);
+                printf("\nInsira o numero do quarto a ser liberado (1 a %d):\n ", MAX_ESPACOS);
                 scanf("%d", &quarto);
 
                 liberarQuarto(pousada, quarto);
@@ -270,11 +270,11 @@ int main() {
                 printf("Finalizando e fechando o programa...\n");
                 break;
             default:
-                printf("\nOps! Opção inválida. Por favor, escolha uma opção válida.\n\n");
+                printf("\nOps! Opcao invalida. Por favor, escolha uma opcao valida.\n\n");
         }
-    } while (opção != 8);
+    } while (opcao != 8);
 
-    // Libera a memória alocada para o hotel
+    // Libera a memoria alocada para o hotel
     free(pousada);
     return 0;
 }
