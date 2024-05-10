@@ -121,7 +121,7 @@ void editarNomeHóspede(Pousada *pousada, char apelidoAntigo[], char apelidoNovo
         }
         atual = atual->próximo;
     }
-    printf("==Ops! Hóspede %s não encontrado.\n\n\n", apelidoAntigo);
+    printf("Ops! Hóspede %s não encontrado.\n\n\n", apelidoAntigo);
 }
 
 // Função para liberar um quarto, removendo o hóspede associado a ele
